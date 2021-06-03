@@ -1,24 +1,21 @@
-import logo from './logo.svg';
+import {BrowserRouter , Route, Switch} from 'react-router-dom';
+import FirstPerson  from './components/FirstPerson';
+import SecondPerson  from './components/SecondPerson';
 import './App.css';
+import PersonSwitcher from "./components/PersonSwitcher";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <BrowserRouter>
+        <>
+            <PersonSwitcher/>
+        <Switch>
+          <Route path="/" component={FirstPerson} exact />
+          <Route path='/first-person' component={FirstPerson} exact />
+          <Route path='/second-person' component={SecondPerson} exact />
+        </Switch>
+        </>
+      </BrowserRouter>
   );
 }
 
